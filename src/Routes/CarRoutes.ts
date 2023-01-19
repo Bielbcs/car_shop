@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import CarsController from '../Controllers/CarsController';
-import CarsValidations from '../Middlewares/VerifyCar';
+import Validations from '../Middlewares/Validations';
 
 const route = Router();
 
@@ -16,13 +16,13 @@ route.get(
 
 route.get(
   '/cars/:id',
-  (req, res, next) => new CarsValidations(req, res, next).verifyCars(),
+  (req, res, next) => new Validations(req, res, next, 'Car').verify(),
   (req, res, next) => new CarsController(req, res, next).findById(),
 );
 
 route.put(
   '/cars/:id',
-  (req, res, next) => new CarsValidations(req, res, next).verifyCars(),
+  (req, res, next) => new Validations(req, res, next, 'Car').verify(),
   (req, res, next) => new CarsController(req, res, next).updateCar(),
 );
 

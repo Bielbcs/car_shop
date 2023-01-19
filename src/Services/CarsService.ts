@@ -9,7 +9,7 @@ export default class CarService {
   }
 
   async insertCar(spec: ICar): Promise<Car> {
-    const result = await this.model.insertCar(spec);
+    const result = await this.model.create(spec);
 
     const car = new Car(result);
 
@@ -34,6 +34,11 @@ export default class CarService {
   }
 
   async updateCar(id: string, specs: ICar) {
-    await this.model.updateCar(id, specs);
+    const car = await this.model.update(id, specs);
+    
+    if (car) {
+      const editedCar = new Car(car);
+      return editedCar;
+    }
   }
 }

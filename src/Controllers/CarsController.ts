@@ -33,6 +33,10 @@ export default class CarsController {
   async findById() {
     const { id } = this.req.params;
 
+    const test = await this.service.findById(id);
+
+    if (!test) return this.res.status(404).send({ message: 'Car not found' });
+
     try {
       const car = await this.service.findById(id);
       return this.res.status(200).json(car);
@@ -44,10 +48,13 @@ export default class CarsController {
   async updateCar() {
     const { id } = this.req.params;
     const specs: ICar = this.req.body;
-    try {
-      await this.service.updateCar(id, specs);
 
-      const editedCar = await this.service.findById(id);
+    const car = await this.service.findById(id);
+
+    if (!car) return this.res.status(404).send({ message: 'Car not found' });
+    
+    try {
+      const editedCar = await this.service.updateCar(id, specs);
       return this.res.status(200).json(editedCar);
     } catch (error) {
       this.next(error);
