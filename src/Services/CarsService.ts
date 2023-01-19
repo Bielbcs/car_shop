@@ -32,4 +32,8 @@ export default class CarService {
       return car;
     }
   }
+
+  async updateCar(id: string, specs: ICar) {
+    await this.model.updateCar(id, specs);
+  }
 }
