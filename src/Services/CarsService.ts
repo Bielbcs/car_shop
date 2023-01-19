@@ -15,4 +15,21 @@ export default class CarService {
 
     return car;
   }
+
+  async findAll(): Promise<Car[]> {
+    const result = await this.model.findAll();
+
+    const cars = result.map((car) => new Car(car));
+
+    return cars;
+  }
+
+  async findById(id: string): Promise<Car | undefined> {
+    const result = await this.model.findById(id);
+
+    if (result) {
+      const car = new Car(result);
+      return car;
+    }
+  }
 }

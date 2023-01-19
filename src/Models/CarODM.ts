@@ -23,16 +23,16 @@ class CarODM {
     this.model = models.Car || model('Car', this.schema);
   }
 
-  public async insertCar(car: ICar): Promise<ICar> {
+  public async insertCar(car: ICar) {
     return this.model.create({ ...car });
   }
 
-  public async findAll(): Promise<ICar[]> {
+  public async findAll() {
     return this.model.find();
   }
 
-  public async find(key: string) {
-    return this.model.find({ key });
+  public async findById(id: string) {
+    return this.model.findById(id);
   }
 }
 
