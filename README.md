@@ -1,13 +1,15 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Como rodar o projeto
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+### Necessário ter docker e docker-compose instalado na máquina
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+1. Clone este repositório.
+
+2. Vá para a pasta raíz do projeto.
+
+3. Instale as dependencias `npm install`
+
+4. Suba os containeres docker com o comando `docker-compose up -d`. <br/>
+
+5. Entre no container criado com o comando `docker exec -it car_shop bash`
+
+6. Inicie a API com o comando `npm run dev`
